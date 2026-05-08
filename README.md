@@ -12,3 +12,16 @@ To deploy the script, make sure SSH is installed and that port 22 on each machin
 ```powershell
 powershell -ExecutionPolicy Bypass -File \\FILE\storage\cleanup-script\deploy.ps1
 ```
+
+To add remote machines to deploy to, create a new line inside pcs.txt:
+
+```
+USER@MACHINE
+```
+
+For example:
+
+```
+192.168.0.12
+USER@192.168.0.11
+```
