@@ -1,3 +1,5 @@
+& "$PSScriptRoot\config.bat"
+
 $pcs = Get-Content ".\pcs.txt"
 
 foreach ($pc in $pcs) {
