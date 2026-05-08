@@ -7,7 +7,7 @@ Put the `.bat` files and `.vbs` file in `C:\ProgramData\Scripts\`
 
 And run `launcher.vbs` with `wscript.exe` in task scheduler. You can just import the `.xml` file into task scheduler to automatically do this.
 
-To deploy the script, make sure SSH is installed and setup on each machine and run the `deploy.ps1` file.
+To deploy the script, make sure SSH is installed and that port 22 on each machine is open and run the `deploy.ps1` file.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File \\FILE\storage\cleanup-script\deploy.ps1
