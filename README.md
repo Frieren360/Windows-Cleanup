@@ -7,14 +7,8 @@ Put the `.bat` files and `.vbs` file in `C:\ProgramData\Scripts\`
 
 And run `launcher.vbs` with `wscript.exe` in task scheduler. You can just import the `.xml` file into task scheduler to automatically do this.
 
-To deploy the script, make sure Powershell Remoting allowed for the host machine on each remote machine:
+To deploy the script, make sure SSH is installed and setup on each machine and run the `deploy.ps1` file.
 
 ```powershell
-Set-Item WSMan:\localhost\Client\TrustedHosts -Value "192.168.0.11"
-```
-
-Or to append hosts if you already have existing hosts allowed:
-
-```powershell
-Set-Item WSMan:\localhost\Client\TrustedHosts -Concatenate -Value ",192.168.5.151"
+powershell -ExecutionPolicy Bypass -File \\FILE\storage\cleanup-script\deploy.ps1
 ```
