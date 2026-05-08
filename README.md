@@ -1,8 +1,20 @@
 This script pulls the script from a remote location and stores it locally on a computer. If network is not available, it will just run the script, else check for an updated version from the server.
 
-Run install.bat as administrator to install files to C:\ProgramData\Scripts\
+Run install.bat as administrator to install files to `C:\ProgramData\Scripts\`
 
 Alternatively for a manual install:
-Put the .bat files and .vbs file in C:\ProgramData\Scripts\
+Put the `.bat` files and `.vbs` file in `C:\ProgramData\Scripts\`
 
-And run launcher.vbs with wscript.exe in task scheduler. You can just import the .xml file into task scheduler to automatically do this.
+And run `launcher.vbs` with `wscript.exe` in task scheduler. You can just import the `.xml` file into task scheduler to automatically do this.
+
+To deploy the script, make sure Powershell Remoting allowed for the host machine on each remote machine:
+
+```powershell
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "192.168.0.11"
+```
+
+Or to append hosts if you already have existing hosts allowed:
+
+```powershell
+Set-Item WSMan:\localhost\Client\TrustedHosts -Concatenate -Value ",192.168.5.151"
+```
