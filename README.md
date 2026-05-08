@@ -10,7 +10,7 @@ And run `launcher.vbs` with `wscript.exe` in task scheduler. You can just import
 To deploy the script, make sure SSH is installed and that port 22 on each machine is open and run the `deploy.ps1` file.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File \\FILE\storage\cleanup-script\deploy.ps1
+powershell -ExecutionPolicy Bypass -File deploy.ps1
 ```
 
 To add remote machines to deploy to, create a new line inside pcs.txt:
