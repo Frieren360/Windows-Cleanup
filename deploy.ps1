@@ -24,3 +24,5 @@ foreach ($pc in $pcs) {
     # Remote machines
     ssh NETLAB@$pc "powershell -NoProfile -ExecutionPolicy Bypass -File `"$INSTALL_SOURCE`""
 }
+
+Read-Host "Press Enter to continue"
