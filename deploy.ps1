@@ -12,15 +12,15 @@ foreach ($pc in $pcs) {
     $pc = $pc.Trim()
 
     # Run locally on host machine
-    if ($pc -eq $env:HOST_MACHINE) {
+    if ($pc -eq $HOST_MACHINE) {
 
         Write-Host "Running locally on host machine: $pc"
 
-        & "$env:INSTALL_SOURCE"
+        & "$INSTALL_SOURCE"
 
         continue
     }
 
     # Remote machines
-    ssh NETLAB@$pc "& $env:INSTALL_SOURCE"
+    ssh NETLAB@$pc "& $INSTALL_SOURCE"
 }
