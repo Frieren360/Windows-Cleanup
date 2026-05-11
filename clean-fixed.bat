@@ -142,5 +142,35 @@ powershell -ExecutionPolicy Bypass -Command "Checkpoint-Computer -Description 'F
 
 
 echo.
+
+:: echo Removing mapped network drives...
+:: Disconnect all mapped drives
+:: net use * /delete /y
+
+:: echo Clearing active SMB connections...
+:: Remove SMB client connections
+:: powershell -command "Get-SmbMapping | Remove-SmbMapping -Force -UpdateProfile"
+
+
+:: Delete all saved credentials from Credential Manager
+for /f "tokens=1,2 delims= " %%A in ('cmdkey /list ^| findstr "Target:"') do (
+    cmdkey /delete:%%B
+)
+
+echo Clearing Windows network cache...
+
+:: Restart workstation service to clear cached sessions
+net stop workstation /y
+net start workstation
+
+echo Clearing Remote Desktop connection history...
+
+reg delete "HKCU\Software\Microsoft\Terminal Server Client\Default" /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Terminal Server Client\Servers" /f >nul 2>&1
+del /f /q "%USERPROFILE%\Documents\Default.rdp" >nul 2>&1
+
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Map Network Drive MRU" /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2" /f >nul 2>&1
+
 echo Cleanup and reset completed successfully.
 pause
