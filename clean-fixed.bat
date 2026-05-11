@@ -143,13 +143,13 @@ powershell -ExecutionPolicy Bypass -Command "Checkpoint-Computer -Description 'F
 
 echo.
 
-:: echo Removing mapped network drives...
+echo Removing mapped network drives...
 :: Disconnect all mapped drives
-:: net use * /delete /y
+net use * /delete /y
 
-:: echo Clearing active SMB connections...
+echo Clearing active SMB connections...
 :: Remove SMB client connections
-:: powershell -command "Get-SmbMapping | Remove-SmbMapping -Force -UpdateProfile"
+powershell -command "Get-SmbMapping | Remove-SmbMapping -Force -UpdateProfile"
 
 
 :: Delete all saved credentials from Credential Manager
