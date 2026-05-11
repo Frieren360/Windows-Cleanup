@@ -34,3 +34,34 @@ USER@192.168.0.11
 To configure options, edit the file `config.ps1`.
 
 HOST_MACHINE refers to the main computer that the script is being deployed from and will locally install instead of being deployed via ssh when running `deploy.ps1 `.
+
+# Removed Files and Data
+- Windows File Explorer history
+- Temp files
+  - Windows Temp
+  - System Temp
+- Prefetch
+- DNS Cache
+- Microsoft Edge
+  - Edge profiles
+  - browsing data
+  - Edge cache leftovers
+- Run history
+- Clipboard
+- Taskbar pinned apps
+- Desktop icon cache and layout
+- Notepad history
+- Recycle Bin
+- files from Desktop
+- System Restore points
+- mapped network drives
+- active SMB connections
+- saved credentials from Credential Manager
+- Windows network cache
+- Remote Desktop connection history
+
+# Extras
+- Reset Start Menu layout
+- Reset icon layout
+- Setting blank blue desktop wallpaper
+- Creating fresh System Restore point
