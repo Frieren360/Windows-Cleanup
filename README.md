@@ -34,8 +34,8 @@ USER@192.168.0.11
 To configure options, edit the file `config.ps1`.
 
 HOST_MACHINE refers to the main computer that the script is being deployed from and will locally install instead of being deployed via ssh when running `deploy.ps1 `.
-
-# Removed Files and Data
+# Features
+## Removed Files and Data
 - Windows File Explorer history
 - Temp files
   - Windows Temp
@@ -60,7 +60,7 @@ HOST_MACHINE refers to the main computer that the script is being deployed from 
 - Windows network cache
 - Remote Desktop connection history
 
-# Extras
+## Extras
 - Reset Start Menu layout
 - Reset icon layout
 - Setting blank blue desktop wallpaper
