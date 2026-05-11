@@ -12,7 +12,7 @@ foreach ($pc in $pcs) {
     if ($pc -eq $env:HOST_MACHINE) {
 
         Write-Host "Running locally on host machine: $pc"
-        cmd.exe /c "$env:INSTALL_SCRIPT"
+        Start-Process cmd.exe -ArgumentList "/c `"$env:INSTALL_SCRIPT`"" -NoNewWindow -Wait
 
         continue
     }
