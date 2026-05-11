@@ -1,3 +1,4 @@
+Set-Location $PSScriptRoot
 & "$PSScriptRoot\config.bat"
 
 $pcs = Get-Content ".\pcs.txt"
