@@ -9,7 +9,7 @@ set "HOST_MACHINE="
 set "SOURCE=%~dp0clean-fixed.bat"
 
 :: Network source for script install.bat
-set "INSTALL_SOURCE=%~dp0install.bat"
+set "INSTALL_SOURCE=%~dp0install.ps1"
 
 :: Local install directory
 set "DEST_DIR=C:\ProgramData\Scripts"
