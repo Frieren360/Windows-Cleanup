@@ -2,11 +2,11 @@
 
 :: === CONFIG VARIABLES ===
 
-:: Host Machine
-set "HOST_MACHINE="
+:: Host Machine IP address
+set "HOST_MACHINE=192.168.5.127"
 
 :: Network source for script clean-fixed.bat
-set "SOURCE="
+set "SOURCE=%~dp0clean-fixed.bat"
 
 :: Local install directory
 set "DEST_DIR=C:\ProgramData\Scripts"
