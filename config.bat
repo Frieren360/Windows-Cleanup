@@ -2,6 +2,9 @@
 
 :: === CONFIG VARIABLES ===
 
+:: Host Machine
+set "HOST_MACHINE="
+
 :: Network source for script
 set "SOURCE="
 
