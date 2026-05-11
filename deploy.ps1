@@ -9,11 +9,18 @@ foreach ($pc in $pcs) {
         continue
     }
 
-    # Skip host machine
-    if ($pc.Trim() -eq $env:HOST_MACHINE) {
-        Write-Host "Skipping host machine: $pc"
+    $pc = $pc.Trim()
+
+    # Run locally on host machine
+    if ($pc -eq $env:HOST_MACHINE) {
+
+        Write-Host "Running locally on host machine: $pc"
+
+        cmd /c $env:INSTALL_SCRIPT
+
         continue
     }
 
-    ssh NETLAB@$pc "cmd /c \\192.168.5.253\storage\cleanup-script\install.bat"
+    # Remote machines
+    ssh NETLAB@$pc "cmd /c $env:INSTALL_SCRIPT"
 }
