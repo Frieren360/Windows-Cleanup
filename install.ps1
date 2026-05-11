@@ -23,7 +23,6 @@ Get-ChildItem -Path $SRC -Filter *.vbs | ForEach-Object {
     Copy-Item $_.FullName -Destination $DEST -Force
 }
 
-
 Get-ChildItem -Path $SRC -Filter *.ps1 | ForEach-Object {
     Copy-Item $_.FullName -Destination $DEST -Force
 }
