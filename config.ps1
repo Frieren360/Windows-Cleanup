@@ -1,7 +1,7 @@
 # === CONFIG VARIABLES ===
 
 # Host Machine IP address
-$HOST_MACHINE = "192.168.5.127"
+$HOST_MACHINE = ""
 
 # Directory where this script lives (equivalent to %~dp0)
 $SCRIPT_DIR = $PSScriptRoot
