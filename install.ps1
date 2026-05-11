@@ -13,13 +13,18 @@ if (-not (Test-Path $DEST)) {
     New-Item -ItemType Directory -Path $DEST | Out-Null
 }
 
-Write-Host "`nCopying .bat and .vbs files..."
+Write-Host "`nCopying .bat, .ps1 and .vbs files..."
 
 Get-ChildItem -Path $SRC -Filter *.bat | ForEach-Object {
     Copy-Item $_.FullName -Destination $DEST -Force
 }
 
 Get-ChildItem -Path $SRC -Filter *.vbs | ForEach-Object {
+    Copy-Item $_.FullName -Destination $DEST -Force
+}
+
+
+Get-ChildItem -Path $SRC -Filter *.ps1 | ForEach-Object {
     Copy-Item $_.FullName -Destination $DEST -Force
 }
 
