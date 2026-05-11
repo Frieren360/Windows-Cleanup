@@ -3,7 +3,7 @@
 :: === CONFIG VARIABLES ===
 
 :: Host Machine IP address
-set "HOST_MACHINE=192.168.5.127"
+set "HOST_MACHINE="
 
 :: Network source for script clean-fixed.bat
 set "SOURCE=%~dp0clean-fixed.bat"
