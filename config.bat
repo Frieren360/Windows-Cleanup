@@ -5,7 +5,7 @@
 :: Host Machine
 set "HOST_MACHINE="
 
-:: Network source for script
+:: Network source for script clean-fixed.bat
 set "SOURCE="
 
 :: Local install directory
