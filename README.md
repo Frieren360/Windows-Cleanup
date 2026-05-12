@@ -33,7 +33,7 @@ USER@192.168.0.11
 # Configuration
 To configure options, edit the file `config.ps1`.
 
-HOST_MACHINE refers to the main computer that the script is being deployed from and will locally install instead of being deployed via ssh when running `deploy.ps1 `.
+HOST_MACHINE refers to the main computer that the script is being deployed from and will locally install instead of being deployed via ssh when running `deploy.ps1`.
 # Features
 ## Removed Files and Data
 - Windows File Explorer history
