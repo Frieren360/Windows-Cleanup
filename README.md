@@ -17,7 +17,7 @@ To deploy the script, make sure SSH is installed and that port 22 on each machin
 powershell -ExecutionPolicy Bypass -File deploy.ps1
 ```
 
-To add remote machines to deploy to, create a new line inside pcs.txt following ssh remote node syntax:
+To add remote machines to deploy to, create a new line inside pcs.txt following ssh remote node syntax (you can also include command line options):
 
 ```
 USER@MACHINE
