@@ -352,12 +352,14 @@ try {
 # Ensure all parallel tasks are finished
 Start-Sleep -Seconds 2
 
-try {
-    New-RestoreScript
-    Write-Host "Restore script created successfully"
-}
-catch {
-    Write-Host "Failed to create restore script: $_" -ForegroundColor Yellow
+if (-not $SkipRestore) {
+    Write-Log "PHASE 1: Creating System Restore Point..."
+    try {
+        Checkpoint-Computer -Description "Cleanup: Pre-cleanup restore point" -RestorePointType MODIFY_SETTINGS
+        Write-Log "System Restore point created successfully"
+    } catch {
+        Write-Log "Warning: Could not create restore point: $_" "WARN"
+    }
 }
 
 try {
