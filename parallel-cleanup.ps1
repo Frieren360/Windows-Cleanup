@@ -226,7 +226,7 @@ $regJobs += Start-ParallelJob -JobName "Clear-RDPHistory" -ScriptBlock {
     
     foreach ($path in $rdpPaths) {
         if (Test-Path $path) {
-            Remove-Item -Path $path -Force -ErrorAction SilentlyContinue
+            Remove-Item -Path $path -Force -ErrorAction SilentlyContinue -Recurse
         }
     }
     "Cleared Remote Desktop history"
