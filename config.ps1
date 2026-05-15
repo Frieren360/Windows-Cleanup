@@ -17,3 +17,7 @@ $DEST_DIR = "C:\ProgramData\Scripts"
 
 # Log file location
 $LOG_FILE = "C:\ProgramData\Scripts\run.log"
+
+$EnablePreRestorePoint = $true
+
+$SkipRestorePoint = $false
