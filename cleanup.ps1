@@ -362,14 +362,6 @@ if (-not $SkipRestore) {
     }
 }
 
-try {
-    Start-Process explorer.exe -WindowStyle Hidden
-    Write-Host "Explorer restarted (hidden)"
-}
-catch {
-    Write-Host "Explorer restart failed: $_" -ForegroundColor Yellow
-}
-
 # ============================================================================
 # COMPLETION SUMMARY
 # ============================================================================
