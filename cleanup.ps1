@@ -359,14 +359,6 @@ try {
     Write-Log "Warning: Could not set wallpaper: $_" "WARN"
 }
 
-# Restart Explorer
-try {
-    Start-Process -FilePath explorer.exe
-    Write-Log "Restarted Windows Explorer"
-} catch {
-    Write-Log "Warning: Could not restart Explorer: $_" "WARN"
-}
-
 # =========================
 # FINALIZATION STAGE
 # =========================
