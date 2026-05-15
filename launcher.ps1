@@ -1,3 +1,12 @@
+# Parallel Cleanup Launcher
+# Enhanced version of launcher.ps1 that runs the parallel cleanup script
+
+param(
+    [switch]$SkipRestore = $false,
+    [switch]$Verbose = $false,
+    [switch]$DryRun = $false
+)
+
 # Ensure script runs from its own directory
 $ScriptDir = $PSScriptRoot
 
@@ -12,41 +21,59 @@ if (-not (Test-Path $ConfigPath)) {
 . $ConfigPath
 
 # Derived variables
-$DEST = Join-Path $DEST_DIR "clean-fixed.bat"
+$CLEANUP_SCRIPT = Join-Path $SCRIPT_DIR "cleanup.ps1"
+$DEST_DIR_CLEANUP = "$DEST_DIR\cleanup.ps1"
+$LOG_FILE_PARALLEL = "$DEST_DIR\parallel-cleanup.log"
 
-Write-Host "Ensuring script directory exists..."
+Write-Host "========================================"
+Write-Host "Parallel Windows Cleanup Launcher"
+Write-Host "========================================"
+Write-Host "Script Directory: $SCRIPT_DIR"
+Write-Host "Config Path: $ConfigPath"
+Write-Host "Installation Directory: $DEST_DIR"
 
+# Ensure script directory exists
 if (-not (Test-Path $DEST_DIR)) {
     New-Item -ItemType Directory -Path $DEST_DIR | Out-Null
+    Write-Host "Created directory: $DEST_DIR"
 }
 
-Write-Host "Checking for updates..."
+Write-Host ""
+Write-Host "Checking for parallel cleanup script..."
 
-# If destination doesn't exist, copy immediately
-if (-not (Test-Path $DEST)) {
-    Write-Host "No local copy found. Downloading..."
-    Copy-Item $SOURCE $DEST -Force
-}
-else {
-    # Compare timestamps
-    $srcTime = (Get-Item $SOURCE).LastWriteTime
-    $dstTime = (Get-Item $DEST).LastWriteTime
-
-    if ($srcTime -eq $dstTime) {
-        Write-Host "Script is up to date. Skipping download."
+# Copy parallel cleanup script if needed
+if (Test-Path $CLEANUP_SCRIPT) {
+    if (-not (Test-Path $DEST_DIR_CLEANUP)) {
+        Write-Host "Copying parallel cleanup script..."
+        Copy-Item $CLEANUP_SCRIPT $DEST_DIR_CLEANUP -Force
+    } else {
+        Write-Host "Parallel cleanup script already installed."
     }
-    else {
-        Write-Host "New version detected. Updating..."
-        Copy-Item $SOURCE $DEST -Force
-    }
+} else {
+    Write-Host "ERROR: cleanup.ps1 not found in $SCRIPT_DIR"
+    exit 1
 }
 
-# Run script
-if (Test-Path $DEST) {
-    Write-Host "Running main script..."
+Write-Host ""
+Write-Host "Launching parallel cleanup..."
+Write-Host ""
 
-    & cmd.exe /c "`"$DEST`"" 2>&1 | Tee-Object -FilePath $LOG_FILE -Append
-}
-else {
-    Write-Host "Failed to retrieve script."
+# Build arguments
+$arguments = @()
+if ($SkipRestore) { $arguments += "-SkipRestore" }
+if ($Verbose) { $arguments += "-Verbose" }
+if ($DryRun) { $arguments += "-DryRun" }
+
+# Run the parallel cleanup script
+if (Test-Path $DEST_DIR_CLEANUP) {
+    & powershell -ExecutionPolicy Bypass -File $DEST_DIR_CLEANUP @arguments 2>&1 | Tee-Object -FilePath $LOG_FILE_PARALLEL -Append
+    
+    Write-Host ""
+    Write-Host "========================================"
+    Write-Host "Cleanup complete. Check the log:"
+    Write-Host $LOG_FILE_PARALLEL
+    Write-Host "========================================"
+} else {
+    Write-Host "Failed to locate cleanup script at: $DEST_DIR_CLEANUP"
+    exit 1
 }
