@@ -1,4 +1,4 @@
-This script pulls the script from a remote location and stores it locally on a computer. If network is not available, it will just run the script, else check for an updated version from the server.
+The launcher script pulls the cleanuo script from a remote location and stores it locally on a computer. If network is not available, it will just run the script, else check for an updated version from the server.
 
 Run install.ps1 as administrator to install files to `C:\ProgramData\Scripts\`
 
