@@ -1,4 +1,4 @@
-# Windows Cleanup Script User Guide
+# Windows Cleanup Script
 
 A comprehensive Windows system cleanup utility that removes temporary files, cache data, and clears various system artifacts to reclaim disk space and improve system privacy. The script can be run locally or deployed to multiple machines remotely.
 
