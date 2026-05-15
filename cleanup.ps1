@@ -10,7 +10,7 @@ param(
 $ErrorActionPreference = 'SilentlyContinue'
 
 # Configuration
-$LogFile = "C:\ProgramData\Scripts\parallel-cleanup.log"
+$LogFile = "C:\ProgramData\Scripts\cleanup.log"
 $MaxJobs = [System.Environment]::ProcessorCount
 
 # Ensure log directory exists
