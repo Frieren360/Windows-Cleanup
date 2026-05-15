@@ -102,20 +102,6 @@ Write-Log "Maximum concurrent jobs: $MaxJobs"
 Write-Log "Verbose mode: $Verbose"
 
 # ============================================================================
-# PHASE 1: PRE-CLEANUP - Create System Restore Point (Sequential)
-# ============================================================================
-
-if (-not $SkipRestore) {
-    Write-Log "PHASE 1: Creating System Restore Point..."
-    try {
-        Checkpoint-Computer -Description "Cleanup: Pre-cleanup restore point" -RestorePointType MODIFY_SETTINGS
-        Write-Log "System Restore point created successfully"
-    } catch {
-        Write-Log "Warning: Could not create restore point: $_" "WARN"
-    }
-}
-
-# ============================================================================
 # PHASE 2: FILE CLEANUP - Parallel Execution
 # ============================================================================
 
