@@ -21,8 +21,8 @@ if (-not (Test-Path $ConfigPath)) {
 . $ConfigPath
 
 # Derived variables
-$CLEANUP_SCRIPT = Join-Path $SCRIPT_DIR "parallel-cleanup.ps1"
-$DEST_DIR_CLEANUP = "$DEST_DIR\parallel-cleanup.ps1"
+$CLEANUP_SCRIPT = Join-Path $SCRIPT_DIR "cleanup.ps1"
+$DEST_DIR_CLEANUP = "$DEST_DIR\cleanup.ps1"
 $LOG_FILE_PARALLEL = "$DEST_DIR\parallel-cleanup.log"
 
 Write-Host "========================================"
@@ -50,7 +50,7 @@ if (Test-Path $CLEANUP_SCRIPT) {
         Write-Host "Parallel cleanup script already installed."
     }
 } else {
-    Write-Host "ERROR: parallel-cleanup.ps1 not found in $SCRIPT_DIR"
+    Write-Host "ERROR: cleanup.ps1 not found in $SCRIPT_DIR"
     exit 1
 }
 
